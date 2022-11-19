@@ -1,16 +1,37 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+<head>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
+
+    <title>Application</title>
+
+    <link rel="shortcut icon" href="{{ asset('admin') }}/assets/dist/img/favicon.png">
+
+    <link href="{{ asset('admin') }}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="{{ asset('admin') }}/assets/dist/css/style.css" rel="stylesheet">
+</head>
+
+<body class="bg-white">
+    <div class="d-flex align-items-center h-100vh">
+        <div class="form-wrapper m-auto">
+            <div class="form-container form-container-2 my-4">
+                <div class="panel bg-light">
+
+                    <div class="panel-header justify-content-center text-center mb-3">
+                        <h3 class="fs-24">Reset Password</h3>
+                    </div>
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
+                    <form class="register-form" method="POST" action="{{ route('password.update') }}">
                         @csrf
-
                         <input type="hidden" name="token" value="{{ $token }}">
 
                         <div class="row mb-3">
@@ -61,5 +82,10 @@
             </div>
         </div>
     </div>
-</div>
-@endsection
+
+    <script src="{{ asset('admin') }}/assets/plugins/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="{{ asset('admin') }}/assets/dist/js/popper.min.js"></script>
+    <script src="{{ asset('admin') }}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

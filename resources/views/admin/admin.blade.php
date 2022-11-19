@@ -84,32 +84,8 @@
     @stack('js')
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery.bangla@1/dist/jquery.bangla.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-    <script>
-        // $(document).ready(function() {
-        //     $('#division-bangla').on('change', function() {
-        //         alert('ok');
-        //     })
-        // });
-        $('#input-area').bangla('enable', true);
-        $('#input-area-two').bangla('enable', true);
-        $('#input-area-three').bangla('enable', true);
-        $('#input-area-four').bangla('enable', true);
-        $('#input-area-five').bangla('enable', true);
-        $('#input-area-six').bangla('enable', true);
-        $('#input-area-seven').bangla('enable', true);
-        $('#input-area-eight').bangla('enable', true);
-        $('#source-of-money').bangla('enable', true);
-        $('#input-department-bangla').bangla('enable', true);
-        $('#input-division-bangla').bangla('enable', true); 
-        $('#main-profession-input-area').bangla('enable', true);
-        $('#sub-profession-input-area').bangla('enable', true);
-        $('#input-area-tool1').bangla('enable', true);
-        $('#input-area-tool2').bangla('enable', true);
-        $('#input-area-tool3').bangla('enable', true);
-        $('#input-area-tool4').bangla('enable', true);
-    </script>
+ 
     <script>
         $(document).ready(function() {
             $('.js-example-basic-single').select2();

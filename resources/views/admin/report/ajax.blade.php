@@ -1,3 +1,4 @@
+<button type="button" class="btn btn-danger mb-2" id="printPdf">Print Pdf</button>
 <div class="table-responsive">
     <table class="table display table-bordered table-striped table-hover multi-tables dataTable">
         <thead>
@@ -22,7 +23,7 @@
                 <td>{{ $item->get_type->typeName }}</td>
                 <td>{{ $item->amount }}</td>
                 @php
-                    $total = $total+$item->amount;
+                $total = $total+$item->amount;
                 @endphp
             </tr>
             @php
@@ -33,10 +34,60 @@
             @endforelse
             <tr>
                 <th colspan="4" class="text-center">Total</th>
-                    <th>{{$total}}</th>
+                <th>{{$total}}</th>
             </tr>
         </tbody>
 
 
     </table>
 </div>
+{{-- @push('js') --}}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#printPdf').click(function() {
+            var assetId = $('#assetId').val();
+            alert(assetId);
+            $.ajax({
+                type: 'GET',
+                url: '/print-pdf',
+                data: {
+                    assetId: assetId,
+                },
+                // xhrFields: {
+                //     responseType: 'blob'
+                // },
+                // beforeSend: function() {
+                //     $('#loader').show();
+                // },
+        xhrFields: {
+            responseType: 'blob'
+        },
+        success: function(response){
+            var blob = new Blob([response]);
+            var link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = "Fisher-Id-Card-List.pdf";
+            link.click();
+        },
+        error: function(blob){
+        console.log(blob);
+        }
+
+                // success: function(response) {
+                //     console.log(response);
+                //     $('#loader').hide();
+                //     var blob = new Blob([response]);
+                //     var link = document.createElement('a');
+                //     link.href = window.URL.createObjectURL(blob);
+                //     link.download = "abc.pdf";
+                //     link.click();
+                // },
+                // error: function(blob) {
+                //     console.log(blob);
+                // }
+            });
+
+        });
+    });
+</script>
+{{-- @endpush --}}

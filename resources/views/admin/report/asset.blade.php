@@ -12,7 +12,13 @@
         </div>
     </div>
 </div>
-
+<div id='loader' style='display: none;'>
+    <div class="text-center">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+</div>
 <div class="body-content">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -44,28 +50,29 @@
             <img src="#" style="height: 100px;" alt="">
         </div>
     </div>
-    <div class="card mb-4" id="showData">
 
+    <div class="card mb-4" id="showData">
     </div>
 </div>
 @push('js')
 <script>
-    $(document).ready(function() {
-                $('#assetId').on('change', function() {
-                    let assetId = $(this).children("option:selected").val();
-                    $.ajax({
-                        url: "{{ route('getReportList') }}",
-                        method: 'GET',
-                        data: {
-                            assetId: assetId,
-                        },
-                        success: function(response) {
-                            $('#showData').html(response);
-                        },
+$(document).ready(function () {
+    $("#assetId").on("change", function () {
+        let assetId = $(this).children("option:selected").val();
+        $.ajax({
+            url: "{{ route('getReportList') }}",
+            method: "GET",
+            data: {
+                assetId: assetId,
+            },
+            success: function (response) {
+                // console.log(response);
+                $("#showData").html(response);
+            },
+        });
+    });
+});
 
-                    });
-                });
-            });
 </script>
 @endpush
 @endsection

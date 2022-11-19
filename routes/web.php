@@ -3,6 +3,7 @@
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -41,7 +42,14 @@ Route::post('/update-data', [DataController::class, 'updateData'])->name('update
 Route::get('/delete-data/{id}', [DataController::class, 'deleteData'])->name('deleteData');
 // report
 Route::get('/get-report-list', [ReportController::class, 'getReportList'])->name('getReportList');
+Route::get('/get-quarter-list', [ReportController::class, 'getQuarterList'])->name('getQuarterList');
 Route::get('/type-report', [ReportController::class, 'typeReport'])->name('typeReport');
 Route::get('/asset-report', [ReportController::class, 'assetReport'])->name('assetReport');
 Route::get('/monthly-report', [ReportController::class, 'monthlyReport'])->name('monthlyReport');
+Route::get('/quarterly-report', [ReportController::class, 'quarterlyReport'])->name('quarterlyReport');
 Route::get('/get-month',[ReportController::class,'getMonth'])->name('getMonth');
+Route::get('/print-pdf',[ReportController::class, 'printPdf'])->name('printPdf');
+// user
+Route::get('/edit-user/{id}', [UserController::class, 'editUser'])->name('editUser');
+Route::post('/update-user', [UserController::class, 'updateUser'])->name('updateUser');
+Route::post('/post-email', [UserController::class, 'postEmail'])->name('postEmail');

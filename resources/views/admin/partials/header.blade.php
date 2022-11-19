@@ -109,21 +109,12 @@
                         <span><a href="cdn-cgi/l/email-protection" class="__cf_email__"
                                 data-cfemail="2f4a574e425f434a6f48424e4643014c4042">{{Auth::user()->email}}</a></span>
                     </div><!-- user-header -->
-                    {{-- <a href="index.html" class="dropdown-item"><i class="typcn typcn-user-outline"></i> My Profile</a>
-                    <a href="index.html" class="dropdown-item"><i class="typcn typcn-edit"></i> Edit Profile</a>
-                    <a href="index.html" class="dropdown-item"><i class="typcn typcn-arrow-shuffle"></i> Activity
-                        Logs</a> --}}
-                    <a href="" class="dropdown-item"><i class="typcn typcn-cog-outline"></i> Account
+                    <a href="{{route('editUser',Auth::user()->id)}}" class="dropdown-item"><i class="typcn typcn-cog-outline"></i> Account
                         Settings</a>
                     <a href="http://bhulua.thememinister.com/page-signin.html" class="dropdown-item"
                         href="{{ route('logout') }}" onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();"><i
                             class="typcn typcn-key-outline"></i> Sign Out</a>
-                    {{-- <a class="dropdown-item" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                                  document.getElementById('logout-form').submit();">
-                     {{ __('Logout') }}
-                 </a> --}}
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf

@@ -7,7 +7,7 @@
         <div class="media">
 
             <div class="media-body">
-                <h1 class="font-weight-bold">Monthly Report</h1>
+                <h1 class="font-weight-bold">Quarterly Report</h1>
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
                     <thead>
                         <tr>
                             <th>Year</th>
-                            <th>Month</th>
+                            <th>Quarter</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,7 +37,12 @@
                                 </select>
                             </td>
                             <td>
-                                <select class="form-control" name="monthId" id="monthId">
+                                <select class="form-control" id="quarterId" name="quarterId">
+                                    <option value="">--Select Quarter--</option>
+                                    <option value="1">Q1</option>
+                                    <option value="2">Q2</option>
+                                    <option value="3">Q3</option>
+                                    <option value="4">Q4</option>
                                 </select>
                             </td>
                         </tr>
@@ -55,51 +60,37 @@
 </div>
 @push('js')
 <script>
-    $(document).ready(function () {
-    $("#yearId").on("change", function () {
-        let year = $(this).children("option:selected").val();
-        if (year > 0) {
-            $.ajax({
-                url: "{{ route('getMonth') }}",
-                method: "GET",
-                data: {
-                    year: year,
-                },
-                success: function (response) {
-                    console.log(response);
-                    $("#monthId").html(response);
-                },
-            });
-        } else {
-            $("#monthId").html("");
-        }
-    });
-});
+
 $(document).ready(function () {
     $("#yearId").on("change", function () {
+        $("#quarterId").val('');
         $("#showData").html('');
     });
-    $("#monthId").on("change", function () {
+    $("#quarterId").on("change", function () {
+        // alert('ok');
         let year = $("#yearId").val();
-        let month = $("#monthId").val();
+        let quarterId = $("#quarterId").val();
+
+        // alert(month);
         $.ajax({
-            url: "{{ route('getReportList') }}",
+            url: "{{ route('getQuarterList') }}",
             method: "GET",
             data: {
                 year: year,
-                month: month,
+                quarterId: quarterId,
             },
             beforeSend: function () {
                 $("#loader").show();
             },
             success: function (response) {
+                console.log(response);
                 $("#loader").hide();
                 $("#showData").html(response);
             },
         });
+        // alert(year);
     });
 });
-
 
 </script>
 @endpush
